@@ -16,7 +16,7 @@ namespace Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormThuoc());
+            Application.Run(new FormLogin());
         }
     }
 }

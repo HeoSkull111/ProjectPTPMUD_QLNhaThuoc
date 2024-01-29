@@ -10,26 +10,17 @@ using System.Windows.Forms;
 
 namespace Project
 {
-    public partial class FormMain : Form
+    public partial class FormLogin : Form
     {
-        public FormMain()
+        public FormLogin()
         {
             InitializeComponent();
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
+        private void FormLogin_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void txtBoxTaiKhoan_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-
+            FormLogin.Hide();
+            FormMain.Show();
         }
     }
 }
