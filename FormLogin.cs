@@ -19,8 +19,7 @@ namespace Project
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            FormLogin.Hide();
-            FormMain.Show();
+
         }
     }
 }
