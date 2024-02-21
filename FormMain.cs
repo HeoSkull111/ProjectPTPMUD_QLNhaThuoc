@@ -17,11 +17,6 @@ namespace Project
             InitializeComponent();
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtBoxTaiKhoan_TextChanged(object sender, EventArgs e)
         {
 
@@ -30,6 +25,41 @@ namespace Project
         private void txtBoxPassword_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void menuThuoc_Click(object sender, EventArgs e)
+        {
+            FormThuoc formThuoc = new FormThuoc();
+            formThuoc.ShowDialog();
+        }
+
+        private void menuHSBN_Click(object sender, EventArgs e)
+        {
+            FormHSBN formHSBN = new FormHSBN();
+            formHSBN.ShowDialog();
+        }
+
+        private void menuPhieuKhamBenh_Click(object sender, EventArgs e)
+        {
+            FormPhieuKhamBenh formPKB = new FormPhieuKhamBenh();
+            formPKB.ShowDialog();
+        }
+
+        private void menuToaThuoc_Click(object sender, EventArgs e)
+        {
+            FormToaThuoc form = new FormToaThuoc();
+            form.ShowDialog(); 
+        }
+        private void mnuHoaDon_Click(object sender, EventArgs e)
+        {
+            FormHoaDon form = new FormHoaDon();
+            form.ShowDialog();
+        }
+
+        private void mnuCTHD_Click(object sender, EventArgs e)
+        {
+            FormChiTietHD form = new FormChiTietHD();
+            form.ShowDialog();
         }
     }
 }

@@ -50,7 +50,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\BenhNhanBUS.cs" />
+    <Compile Include="BUS\ChiTietHoaDonBUS.cs" />
+    <Compile Include="BUS\ChiTietToaThuocBUS.cs" />
+    <Compile Include="BUS\HoaDonBUS.cs" />
+    <Compile Include="BUS\PhieuKhamBenhBUS.cs" />
+    <Compile Include="BUS\ThuocBUS.cs" />
+    <Compile Include="BUS\ToaThuocBUS.cs" />
+    <Compile Include="DAO\BenhNhanDAO.cs" />
+    <Compile Include="DAO\ChiTietHD_DAO.cs" />
+    <Compile Include="DAO\ChiTietToaThuocDAO.cs" />
+    <Compile Include="DAO\HoaDonThuocDAO.cs" />
+    <Compile Include="DAO\PhieuKhamBenh_DAO.cs" />
+    <Compile Include="DAO\ThuocDAO.cs" />
+    <Compile Include="DAO\ToaThuocDAO.cs" />
     <Compile Include="DataProvider.cs" />
+    <Compile Include="DTO\BenhNhan.cs" />
+    <Compile Include="DTO\ChiTietHD.cs" />
+    <Compile Include="DTO\ChiTietToaThuoc.cs" />
+    <Compile Include="DTO\HoaDonThuoc.cs" />
+    <Compile Include="DTO\PhieuKhamBenh.cs" />
+    <Compile Include="DTO\Thuoc.cs" />
+    <Compile Include="DTO\ToaThuoc.cs" />
+    <Compile Include="FormChiTietHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormChiTietHD.Designer.cs">
+      <DependentUpon>FormChiTietHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHoaDon.Designer.cs">
+      <DependentUpon>FormHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormHSBN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +122,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormChiTietHD.resx">
+      <DependentUpon>FormChiTietHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHoaDon.resx">
+      <DependentUpon>FormHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormHSBN.resx">
+      <DependentUpon>FormHSBN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormThuoc.resx">
       <DependentUpon>FormThuoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormToaThuoc.resx">
+      <DependentUpon>FormToaThuoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -124,11 +169,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BUS\" />
-    <Folder Include="DAO\" />
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Project.BUS;
+using Project.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,31 +17,30 @@ namespace Project
         public FormPhieuKhamBenh()
         {
             InitializeComponent();
+            pkbBus = new PhieuKhamBenhBUS();
         }
-
+        private PhieuKhamBenhBUS pkbBus;
         private void FormPhieuKhamBenh_Load(object sender, EventArgs e)
         {
-
+            LoadDataWithDataReader();
         }
-
-        private void txtBoxNhomThuoc_TextChanged(object sender, EventArgs e)
+        public void LoadDataWithDataReader()
         {
-
-        }
-
-        private void txtBoxTenThuoc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtBoxDangBaoChe_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtBoxMaThuoc_TextChanged(object sender, EventArgs e)
-        {
-
+            List<PhieuKhamBenh> pkbList = pkbBus.getAllPKB();
+            dgvListPK.DataSource = pkbList;
+            dgvListPK.Columns[0].HeaderText = "Mã Phiếu Khám Bệnh";
+            dgvListPK.Columns[1].HeaderText = "Mã Bệnh Nhân";
+            dgvListPK.Columns[2].HeaderText = "Ngày Khám";
+            dgvListPK.Columns[3].HeaderText = "STT";
+            dgvListPK.Columns[4].HeaderText = "Triệu Chứng";
+            dgvListPK.Columns[5].HeaderText = "Chuẩn Đoán";
+            dgvListPK.Columns[0].Width = 50;
+            dgvListPK.Columns[1].Width = 200;
+            dgvListPK.Columns[2].Width = 200;
+            dgvListPK.Columns[3].Width = 100;
+            dgvListPK.Columns[4].Width = 100;
+            dgvListPK.AllowUserToAddRows = false; //Không cho người dùng thêm dữ liệu trực tiếp
+            dgvListPK.EditMode = DataGridViewEditMode.EditProgrammatically; //Không cho sửa dữ liệu trực tiếp
         }
     }
 }

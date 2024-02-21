@@ -14,10 +14,12 @@ namespace Project
             string constr = ConfigurationManager.ConnectionStrings["QLPK"].ConnectionString;
             con = new SqlConnection(constr);
             adapter = new SqlDataAdapter();
-
         }
         private static SqlConnection OpenConnection()
         {
+            string constr = ConfigurationManager.ConnectionStrings["QLPK"].ConnectionString;
+            con = new SqlConnection(constr);
+            adapter = new SqlDataAdapter();
             if (con.State == ConnectionState.Closed || con.State == ConnectionState.Broken)
             {
                 con.Open();
