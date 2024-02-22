@@ -20,10 +20,6 @@ namespace Project
             thuocBUS = new ThuocBUS();
         }
         private ThuocBUS thuocBUS;
-        private void FormThuoc_Load(object sender, EventArgs e)
-        {
-            LoadDataWithDataReader();
-        }
         public void LoadDataWithDataReader()
         {
             List<Thuoc> bnList = thuocBUS.getAllThuoc();
@@ -34,14 +30,74 @@ namespace Project
             dgvThuoc.Columns[3].HeaderText = "Đơn giá";
             dgvThuoc.Columns[4].HeaderText = "Ngày sản xuất";
             dgvThuoc.Columns[5].HeaderText = "Hạn sử dụng";
-            dgvThuoc.Columns[0].Width = 100;
-            dgvThuoc.Columns[1].Width = 200;
-            dgvThuoc.Columns[2].Width = 200;
-            dgvThuoc.Columns[3].Width = 200;
-            dgvThuoc.Columns[4].Width = 300;
-            dgvThuoc.Columns[5].Width = 300;
             dgvThuoc.AllowUserToAddRows = false; //Không cho người dùng thêm dữ liệu trực tiếp
             dgvThuoc.EditMode = DataGridViewEditMode.EditProgrammatically; //Không cho sửa dữ liệu trực tiếp
+        }
+        private void FormThuoc_Load(object sender, EventArgs e)
+        {
+            LoadDataWithDataReader();
+        }
+        private void ResetValue()
+        {
+            txtMaThuoc.Text = "";
+            txtDonVi.Text = "";
+            txtTenThuoc.Text = "";
+            txtDonGia.Text = "";
+            dtNSX.Text = "";
+            dtHSD.Text = "";
+        }
+        private void dgvThuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMaThuoc.Text = dgvThuoc.CurrentRow.Cells["MaThuoc"].Value.ToString();
+            txtDonVi.Text = dgvThuoc.CurrentRow.Cells["DonVi"].Value.ToString();
+            txtTenThuoc.Text = dgvThuoc.CurrentRow.Cells["TenThuoc"].Value.ToString();
+            txtDonGia.Text = dgvThuoc.CurrentRow.Cells["DonGia"].Value.ToString();
+            dtNSX.Text = dgvThuoc.CurrentRow.Cells["NSX"].Value.ToString();
+            dtHSD.Text = dgvThuoc.CurrentRow.Cells["HSD"].Value.ToString();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Thuoc thuoc = new Thuoc
+            {
+                MaThuoc = txtMaThuoc.Text,
+                DonVi = txtDonVi.Text,
+                TenThuoc = txtTenThuoc.Text,
+                DonGia = Int32.Parse(txtDonGia.Text),
+                NSX = DateTime.Parse(dtNSX.Text),
+                HSD = DateTime.Parse(dtHSD.Text),
+            };
+            thuocBUS.AddThuoc(thuoc);
+            LoadDataWithDataReader();
+            ResetValue();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            thuocBUS.DeleteThuoc(txtMaThuoc.Text); 
+            LoadDataWithDataReader();
+            ResetValue() ;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            Thuoc thuoc = new Thuoc
+            {
+                MaThuoc = txtMaThuoc.Text,
+                DonVi = txtDonVi.Text,
+                TenThuoc = txtTenThuoc.Text,
+                DonGia = Int32.Parse(txtDonGia.Text),
+                NSX = DateTime.Parse(dtNSX.Text),
+                HSD = DateTime.Parse(dtHSD.Text),
+            };
+            thuocBUS.UpdateThuoc(thuoc);
+            LoadDataWithDataReader();
+            ResetValue();
         }
     }
 }

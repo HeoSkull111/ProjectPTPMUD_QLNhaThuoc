@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,6 +12,7 @@ namespace Project.DAO
     internal class ToaThuocDAO
     {
         public ToaThuocDAO() { }
+        private string cons = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=QLPhongKham;Integrated Security=True";
         public DataTable getAllToaThuoc()
         {
             DataTable dt = new DataTable();
@@ -25,16 +27,56 @@ namespace Project.DAO
             }
             return dt;
         }
-        public DataTable getToaThuocByID(int _id)
+        public void AddToaThuoc(ToaThuoc tt)
         {
-            DataTable dt = new DataTable();
-            string query = "Select * from ToaThuoc where MaToa = @Id";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@Id", SqlDbType.Int)
+            string q = "INSERT INTO ToaThuoc ([MaToa], [MaPK], [BacSiKeToa], [NgayKeToa]) " +
+                        "VALUES (@MaToa, @MaPK, @BacSiKeToa, @NgayKeToa)";
+            using (SqlConnection connection = new SqlConnection(cons))
             {
-                Value = _id
-            };
-            return DataProvider.ExecuteSelectQuery(query, sqlParameters);
+                SqlCommand command = new SqlCommand(q, connection);
+                command.Parameters.AddWithValue("@MaToa", tt.MaToa);
+                command.Parameters.AddWithValue("@MaPK", tt.MaPK);
+                command.Parameters.AddWithValue("@BacSiKeToa", tt.BacSiKeToa);
+                command.Parameters.AddWithValue("@NgayKeToa", tt.NgayKeToa);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+        }
+        public void DeleteToaThuoc(string maToa)
+        {
+            try
+            {
+                string q = "DELETE FROM ToaThuoc WHERE [MaToa] = @MaToa";
+
+                using (SqlConnection connection = new SqlConnection(cons))
+                {
+                    SqlCommand command = new SqlCommand(q, connection);
+                    command.Parameters.AddWithValue("@MaToa", maToa);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        public void UpdateToaThuoc(ToaThuoc tt)
+        {
+            string q = "UPDATE ToaThuoc SET [MaToa] = @MaToa, [MaPK] = @MaPK, [BacSiKeToa] = @BacSiKeToa, [NgayKeToa] = @NgayKeToa WHERE [MaToa] = @MaToa";
+
+            using (SqlConnection connection = new SqlConnection(cons))
+            {
+                SqlCommand command = new SqlCommand(q, connection);
+                command.Parameters.AddWithValue("@MaToa", tt.MaToa);
+                command.Parameters.AddWithValue("@MaPK", tt.MaPK);
+                command.Parameters.AddWithValue("@BacSiKeToa", tt.BacSiKeToa);
+                command.Parameters.AddWithValue("@NgayKeToa", tt.NgayKeToa);
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
     }
 }

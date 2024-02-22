@@ -45,33 +45,43 @@ namespace Project.BUS
             }
             return list;
         }
-        public List<BenhNhan> getBenhNhanByID(int id)
+        public void AddHSBN(BenhNhan bn)
         {
-            DataTable dt = new DataTable();
             try
             {
-                dt = benhNhanDAO.getBenhNhanHDByID(id);
+                string maBN = bn.MaBN;
+                string HoTen = bn.HoTen;
+                string gender = bn.GioiTinh;
+                DateTime? NgaySinh = bn.NgaySinh;
+                string address = bn.DiaChi;
+                string SDT = bn.SDT;
+                benhNhanDAO.AddHSBN(bn);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
-            List<BenhNhan> list = new List<BenhNhan>();
-            if (dt.Rows.Count > 0)
+        }
+        public void UpdateHSBN(BenhNhan bn)
+        {
+            try
             {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    BenhNhan benhNhan = new BenhNhan();
-                    benhNhan.MaBN = dr["MaBN"].ToString();
-                    benhNhan.HoTen = dr["HoTen"].ToString();
-                    benhNhan.GioiTinh = dr["GioiTinh"].ToString();
-                    benhNhan.NgaySinh = DateTime.Parse(dr["NgaySinh"].ToString());
-                    benhNhan.DiaChi = dr["DiaChi"].ToString();
-                    benhNhan.SDT = dr["SDT"].ToString();
-                    list.Add(benhNhan);
-                }
+                string maBN = bn.MaBN;
+                string HoTen = bn.HoTen;
+                string gender = bn.GioiTinh;
+                DateTime? NgaySinh = bn.NgaySinh;
+                string address = bn.DiaChi;
+                string SDT = bn.SDT;
+                benhNhanDAO.UpdateHSBN(bn);
             }
-            return list;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void DeleteHSBN(string maBN)
+        {
+            benhNhanDAO.DeleteHSBN(maBN);
         }
     }
 }

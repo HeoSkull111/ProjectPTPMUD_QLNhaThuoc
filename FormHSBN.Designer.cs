@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.cmbSex = new System.Windows.Forms.GroupBox();
-            this.btnSave = new System.Windows.Forms.Button();
             this.cmbGioitinh = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvListBN = new System.Windows.Forms.DataGridView();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.dateNgaysinh = new System.Windows.Forms.DateTimePicker();
+            this.dtNgaysinh = new System.Windows.Forms.DateTimePicker();
             this.btnDel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btntEdit = new System.Windows.Forms.Button();
@@ -55,12 +54,11 @@
             // 
             // cmbSex
             // 
-            this.cmbSex.Controls.Add(this.btnSave);
             this.cmbSex.Controls.Add(this.cmbGioitinh);
             this.cmbSex.Controls.Add(this.label7);
             this.cmbSex.Controls.Add(this.groupBox2);
             this.cmbSex.Controls.Add(this.btnCancel);
-            this.cmbSex.Controls.Add(this.dateNgaysinh);
+            this.cmbSex.Controls.Add(this.dtNgaysinh);
             this.cmbSex.Controls.Add(this.btnDel);
             this.cmbSex.Controls.Add(this.label5);
             this.cmbSex.Controls.Add(this.btntEdit);
@@ -85,23 +83,12 @@
             this.cmbSex.TabStop = false;
             this.cmbSex.Text = "Thông Tin Bệnh Nhân";
             // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnSave.Enabled = false;
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(570, 202);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(94, 46);
-            this.btnSave.TabIndex = 14;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // cmbGioitinh
             // 
-            this.cmbGioitinh.Enabled = false;
             this.cmbGioitinh.FormattingEnabled = true;
+            this.cmbGioitinh.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
             this.cmbGioitinh.Location = new System.Drawing.Point(106, 119);
             this.cmbGioitinh.Name = "cmbGioitinh";
             this.cmbGioitinh.Size = new System.Drawing.Size(127, 29);
@@ -144,44 +131,45 @@
             this.dgvListBN.Name = "dgvListBN";
             this.dgvListBN.Size = new System.Drawing.Size(937, 163);
             this.dgvListBN.TabIndex = 0;
+            this.dgvListBN.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListBN_CellContentClick);
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnCancel.Enabled = false;
             this.btnCancel.Font = new System.Drawing.Font("Times New Roman", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(693, 202);
+            this.btnCancel.Location = new System.Drawing.Point(631, 207);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(94, 46);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // dateNgaysinh
+            // dtNgaysinh
             // 
-            this.dateNgaysinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateNgaysinh.CalendarTitleForeColor = System.Drawing.Color.Blue;
-            this.dateNgaysinh.Enabled = false;
-            this.dateNgaysinh.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateNgaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateNgaysinh.Location = new System.Drawing.Point(705, 50);
-            this.dateNgaysinh.Margin = new System.Windows.Forms.Padding(2);
-            this.dateNgaysinh.Name = "dateNgaysinh";
-            this.dateNgaysinh.Size = new System.Drawing.Size(225, 26);
-            this.dateNgaysinh.TabIndex = 11;
+            this.dtNgaysinh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtNgaysinh.CalendarTitleForeColor = System.Drawing.Color.Blue;
+            this.dtNgaysinh.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtNgaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtNgaysinh.Location = new System.Drawing.Point(705, 50);
+            this.dtNgaysinh.Margin = new System.Windows.Forms.Padding(2);
+            this.dtNgaysinh.Name = "dtNgaysinh";
+            this.dtNgaysinh.Size = new System.Drawing.Size(225, 26);
+            this.dtNgaysinh.TabIndex = 11;
             // 
             // btnDel
             // 
             this.btnDel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnDel.Font = new System.Drawing.Font("Times New Roman", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDel.Location = new System.Drawing.Point(451, 202);
+            this.btnDel.Location = new System.Drawing.Point(502, 207);
             this.btnDel.Margin = new System.Windows.Forms.Padding(2);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(94, 46);
             this.btnDel.TabIndex = 5;
             this.btnDel.Text = "Xóa";
             this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // label5
             // 
@@ -198,19 +186,19 @@
             // 
             this.btntEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btntEdit.Font = new System.Drawing.Font("Times New Roman", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntEdit.Location = new System.Drawing.Point(329, 202);
+            this.btntEdit.Location = new System.Drawing.Point(380, 207);
             this.btntEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btntEdit.Name = "btntEdit";
             this.btntEdit.Size = new System.Drawing.Size(94, 46);
             this.btntEdit.TabIndex = 4;
             this.btntEdit.Text = "Sửa";
             this.btntEdit.UseVisualStyleBackColor = true;
+            this.btntEdit.Click += new System.EventHandler(this.btntEdit_Click);
             // 
             // txtDiachi
             // 
             this.txtDiachi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDiachi.Enabled = false;
             this.txtDiachi.Location = new System.Drawing.Point(353, 119);
             this.txtDiachi.Margin = new System.Windows.Forms.Padding(2);
             this.txtDiachi.Name = "txtDiachi";
@@ -221,13 +209,14 @@
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 16.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(206, 202);
+            this.btnAdd.Location = new System.Drawing.Point(257, 207);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 46);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label6
             // 
@@ -242,7 +231,6 @@
             // txtSdt
             // 
             this.txtSdt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSdt.Enabled = false;
             this.txtSdt.Location = new System.Drawing.Point(705, 119);
             this.txtSdt.Margin = new System.Windows.Forms.Padding(2);
             this.txtSdt.Name = "txtSdt";
@@ -264,7 +252,6 @@
             // 
             this.txtHoten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtHoten.Enabled = false;
             this.txtHoten.Location = new System.Drawing.Point(353, 42);
             this.txtHoten.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoten.Name = "txtHoten";
@@ -283,7 +270,6 @@
             // 
             // txtMabn
             // 
-            this.txtMabn.Enabled = false;
             this.txtMabn.Location = new System.Drawing.Point(78, 45);
             this.txtMabn.Margin = new System.Windows.Forms.Padding(2);
             this.txtMabn.Name = "txtMabn";
@@ -320,13 +306,12 @@
         #endregion
 
         private System.Windows.Forms.GroupBox cmbSex;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox cmbGioitinh;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvListBN;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.DateTimePicker dateNgaysinh;
+        private System.Windows.Forms.DateTimePicker dtNgaysinh;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btntEdit;

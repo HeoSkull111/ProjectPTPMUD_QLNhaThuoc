@@ -2,12 +2,6 @@
 using Project.DTO;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Project
@@ -46,6 +40,111 @@ namespace Project
         private void FormToaThuoc_Load(object sender, EventArgs e)
         {
             LoadDataWithDataReader();
+        }
+        private void ResetValueTT()
+        {
+            txtBacSi.Text = "";
+            txtMaPK.Text = "";
+            dtNgayKe.Text = "";
+            txtMatoa.Text = "";
+        }
+        private void ResetValueCTTT()
+        {
+            txtMaToaCT.Text = "";
+            txtCD.Text = "";
+            txtMaThuoc.Text = "";
+            txtSL.Text = "";
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void dgvToaThuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtBacSi.Text = dgvToaThuoc.CurrentRow.Cells["BacSiKeToa"].Value.ToString();
+            txtMaPK.Text = dgvToaThuoc.CurrentRow.Cells["MaPK"].Value.ToString();
+            dtNgayKe.Text = dgvToaThuoc.CurrentRow.Cells["NgayKeToa"].Value.ToString();
+            txtMatoa.Text = dgvToaThuoc.CurrentRow.Cells["MaToa"].Value.ToString();
+        }
+
+        private void dgvChiTiet_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMaToaCT.Text = dgvChiTiet.CurrentRow.Cells["MaToa"].Value.ToString();
+            txtCD.Text = dgvChiTiet.CurrentRow.Cells["CachDung"].Value.ToString();
+            txtMaThuoc.Text = dgvChiTiet.CurrentRow.Cells["MaThuoc"].Value.ToString();
+            txtSL.Text = dgvChiTiet.CurrentRow.Cells["SoLuong"].Value.ToString();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            ttBUS.DeleteToaThuoc(txtMatoa.Text);
+            LoadDataWithDataReader();
+            ResetValueTT();
+        }
+
+        private void btnxoa_Click(object sender, EventArgs e)
+        {
+            ctttBUS.DeleteCTToaThuoc(txtMaToaCT.Text);
+            LoadDataWithDataReader();
+            ResetValueCTTT();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            ToaThuoc tt = new ToaThuoc
+            {
+                MaPK = txtMaPK.Text,
+                MaToa = txtMatoa.Text,
+                NgayKeToa = DateTime.Parse(dtNgayKe.Text),
+                BacSiKeToa = txtBacSi.Text,
+            };
+            ttBUS.AddToaThuoc(tt);
+            LoadDataWithDataReader();
+            ResetValueTT();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            ChiTietToaThuoc cttt = new ChiTietToaThuoc
+            {
+                MaToa = txtMaToaCT.Text,
+                MaThuoc = txtMaThuoc.Text,
+                SoLuong = txtSL.Text,
+                CachDung = txtCD.Text,
+            };
+            ctttBUS.AddCTToaThuoc(cttt);
+            LoadDataWithDataReader();
+            ResetValueCTTT();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            ToaThuoc tt = new ToaThuoc
+            {
+                MaPK = txtMaPK.Text,
+                MaToa = txtMatoa.Text,
+                NgayKeToa = DateTime.Parse(dtNgayKe.Text),
+                BacSiKeToa = txtBacSi.Text,
+            };
+            ttBUS.UpdateToaThuoc(tt);
+            LoadDataWithDataReader();
+            ResetValueTT();
+        }
+
+        private void btnSuaTT_Click(object sender, EventArgs e)
+        {
+            ChiTietToaThuoc cttt = new ChiTietToaThuoc
+            {
+                MaToa = txtMaToaCT.Text,
+                MaThuoc = txtMaThuoc.Text,
+                SoLuong = txtSL.Text,
+                CachDung = txtCD.Text,
+            };
+            ctttBUS.UpdateCTToaThuoc(cttt);
+            LoadDataWithDataReader();
+            ResetValueCTTT();
         }
     }
 }

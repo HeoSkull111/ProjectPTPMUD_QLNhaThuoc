@@ -43,32 +43,39 @@ namespace Project.BUS
             }
             return list;
         }
-        public List<ToaThuoc> getCTTTByID(int id)
+        public void AddToaThuoc(ToaThuoc tt)
         {
-            DataTable dt = new DataTable();
             try
             {
-                dt = ttDAO.getToaThuocByID(id);
+                string maToa = tt.MaToa;
+                string maPK = tt.MaPK;
+                string bs = tt.BacSiKeToa;
+                DateTime? NgaykeToa = tt.NgayKeToa;
+                ttDAO.AddToaThuoc(tt);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
-            List<ToaThuoc> list = new List<ToaThuoc>();
-            if (dt.Rows.Count > 0)
+        }
+        public void UpdateToaThuoc(ToaThuoc tt)
+        {
+            try
             {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    ToaThuoc tt = new ToaThuoc();
-
-                    tt.MaToa = dr["MaToa"].ToString();
-                    tt.MaPK = dr["MaPK"].ToString();
-                    tt.BacSiKeToa = dr["BacSiKeToa"].ToString();
-                    tt.NgayKeToa = DateTime.Parse(dr["NgayKeToa"].ToString());
-                    list.Add(tt);
-                }
+                string maToa = tt.MaToa;
+                string maPK = tt.MaPK;
+                string bs = tt.BacSiKeToa;
+                DateTime? NgaykeToa = tt.NgayKeToa;
+                ttDAO.UpdateToaThuoc(tt);
             }
-            return list;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void DeleteToaThuoc(string maToa)
+        {
+            ttDAO.DeleteToaThuoc(maToa);
         }
     }
 }

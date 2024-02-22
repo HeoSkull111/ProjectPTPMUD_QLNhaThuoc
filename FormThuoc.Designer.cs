@@ -31,7 +31,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnDel = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -91,51 +90,44 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnCancel);
-            this.groupBox3.Controls.Add(this.btnSave);
             this.groupBox3.Controls.Add(this.btnDel);
             this.groupBox3.Controls.Add(this.btnEdit);
             this.groupBox3.Controls.Add(this.btnAdd);
-            this.groupBox3.Location = new System.Drawing.Point(120, 146);
+            this.groupBox3.Location = new System.Drawing.Point(159, 146);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(755, 100);
+            this.groupBox3.Size = new System.Drawing.Size(654, 100);
             this.groupBox3.TabIndex = 29;
             this.groupBox3.TabStop = false;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(615, 28);
+            this.btnCancel.Location = new System.Drawing.Point(519, 28);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(99, 59);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Hủy";
             this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(472, 28);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(99, 59);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(329, 28);
+            this.btnDel.Location = new System.Drawing.Point(370, 28);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(99, 59);
             this.btnDel.TabIndex = 2;
             this.btnDel.Text = "Xóa";
             this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(186, 28);
+            this.btnEdit.Location = new System.Drawing.Point(204, 28);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(99, 59);
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -145,6 +137,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox2
             // 
@@ -173,6 +166,7 @@
             this.dgvThuoc.Name = "dgvThuoc";
             this.dgvThuoc.Size = new System.Drawing.Size(962, 213);
             this.dgvThuoc.TabIndex = 0;
+            this.dgvThuoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvThuoc_CellContentClick);
             // 
             // label8
             // 
@@ -336,7 +330,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnDel;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;

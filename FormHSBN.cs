@@ -34,14 +34,71 @@ namespace Project
             dgvListBN.Columns[3].HeaderText = "Địa chỉ";
             dgvListBN.Columns[4].HeaderText = "Ngày sinh";
             dgvListBN.Columns[5].HeaderText = "Số điện thoại";
-            dgvListBN.Columns[0].Width = 100;
-            dgvListBN.Columns[1].Width = 200;
-            dgvListBN.Columns[2].Width = 200;
-            dgvListBN.Columns[3].Width = 75;
-            dgvListBN.Columns[4].Width = 100;
-            dgvListBN.Columns[5].Width = 300;
             dgvListBN.AllowUserToAddRows = false; //Không cho người dùng thêm dữ liệu trực tiếp
             dgvListBN.EditMode = DataGridViewEditMode.EditProgrammatically; //Không cho sửa dữ liệu trực tiếp
+        }
+        public void ResetValue()
+        {
+            txtDiachi.Text = "";
+            txtHoten.Text = "";
+            txtMabn.Text = "";
+            txtSdt.Text = "";
+            dtNgaysinh.Text = "";
+            cmbGioitinh.SelectedIndex = 0;
+        }
+
+        private void dgvListBN_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtDiachi.Text = dgvListBN.CurrentRow.Cells["DiaChi"].Value.ToString();
+            txtHoten.Text = dgvListBN.CurrentRow.Cells["HoTen"].Value.ToString();
+            txtMabn.Text = dgvListBN.CurrentRow.Cells["MaBn"].Value.ToString();
+            txtSdt.Text = dgvListBN.CurrentRow.Cells["SDT"].Value.ToString();
+            dtNgaysinh.Text = dgvListBN.CurrentRow.Cells["NgaySinh"].Value.ToString();
+            cmbGioitinh.Text = dgvListBN.CurrentRow.Cells["GioiTinh"].Value.ToString();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            BenhNhan bn = new BenhNhan
+            {
+                MaBN = txtMabn.Text,
+                HoTen = txtHoten.Text,
+                GioiTinh = cmbGioitinh.Text,
+                NgaySinh = DateTime.Parse(dtNgaysinh.Text),
+                DiaChi = txtDiachi.Text,
+                SDT = txtSdt.Text,
+            };
+            benhNhanBus.AddHSBN(bn);
+            LoadDataWithDataReader();
+            ResetValue();
+        }
+
+        private void btntEdit_Click(object sender, EventArgs e)
+        {
+            BenhNhan bn = new BenhNhan
+            {
+                MaBN = txtMabn.Text,
+                HoTen = txtHoten.Text,
+                GioiTinh = cmbGioitinh.Text,
+                NgaySinh = DateTime.Parse(dtNgaysinh.Text),
+                DiaChi = txtDiachi.Text,
+                SDT = txtSdt.Text,
+            };
+            benhNhanBus.UpdateHSBN(bn);
+            LoadDataWithDataReader();
+            ResetValue();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            benhNhanBus.DeleteHSBN(txtMabn.Text);
+            LoadDataWithDataReader();
+            ResetValue();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

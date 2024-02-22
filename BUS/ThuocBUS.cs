@@ -3,9 +3,12 @@ using Project.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Project.BUS
 {
@@ -45,33 +48,44 @@ namespace Project.BUS
             }
             return list;
         }
-        public List<Thuoc> getThuocByID(int id)
+
+        public void AddThuoc(Thuoc thuoc)
         {
-            DataTable dt = new DataTable();
             try
             {
-                dt = thuocDAO.getToaThuocByID(id);
+                string maThuoc = thuoc.MaThuoc;
+                string tenThuoc = thuoc.TenThuoc;
+                string donVi = thuoc.DonVi;
+                int? donGia = thuoc.DonGia;
+                DateTime? nsx = thuoc.NSX;
+                DateTime? hsd = thuoc.HSD;
+                thuocDAO.AddThuoc(thuoc);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
-            List<Thuoc> list = new List<Thuoc>();
-            if (dt.Rows.Count > 0)
+        }
+        public void UpdateThuoc(Thuoc thuoc)
+        {
+            try
             {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    Thuoc thuoc = new Thuoc();
-                    thuoc.MaThuoc = dr["MaThuoc"].ToString();
-                    thuoc.TenThuoc = dr["TenThuoc"].ToString();
-                    thuoc.DonVi = dr["DonVi"].ToString();
-                    thuoc.DonGia = Int32.Parse(dr["DonGia"].ToString());
-                    thuoc.NSX = DateTime.Parse(dr["NSX"].ToString());
-                    thuoc.HSD = DateTime.Parse(dr["HSD"].ToString());
-                    list.Add(thuoc);
-                }
+                string maThuoc = thuoc.MaThuoc;
+                string tenThuoc = thuoc.TenThuoc;
+                string donVi = thuoc.DonVi;
+                int? donGia = thuoc.DonGia;
+                DateTime? nsx = thuoc.NSX;
+                DateTime? hsd = thuoc.HSD;
+                thuocDAO.UpdateThuoc(thuoc);
             }
-            return list;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void DeleteThuoc(string maThuoc)
+        {
+            thuocDAO.DeleteThuoc(maThuoc);
         }
     }
 }

@@ -43,32 +43,39 @@ namespace Project.BUS
             }
             return list;
         }
-        public List<ChiTietToaThuoc> getCTTTByID(int id)
+        public void AddCTToaThuoc(ChiTietToaThuoc cttt)
         {
-            DataTable dt = new DataTable();
             try
             {
-                dt = ctttDAO.getChiTietToaThuocByID(id);
+                string maToa = cttt.MaToa;
+                string maThuoc = cttt.MaThuoc;
+                string SoLuong = cttt.SoLuong;
+                string CachDung = cttt.CachDung;
+                ctttDAO.AddCTTT(cttt);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
-            List<ChiTietToaThuoc> list = new List<ChiTietToaThuoc>();
-            if (dt.Rows.Count > 0)
+        }
+        public void UpdateCTToaThuoc(ChiTietToaThuoc cttt)
+        {
+            try
             {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    ChiTietToaThuoc cttt = new ChiTietToaThuoc();
-
-                    cttt.MaToa = dr["MaToa"].ToString();
-                    cttt.MaThuoc = dr["MaThuoc"].ToString();
-                    cttt.SoLuong = dr["SoLuong"].ToString();
-                    cttt.CachDung = dr["CachDung"].ToString();
-                    list.Add(cttt);
-                }
+                string maToa = cttt.MaToa;
+                string maThuoc = cttt.MaThuoc;
+                string SoLuong = cttt.SoLuong;
+                string CachDung = cttt.CachDung;
+                ctttDAO.UpdateCTTT(cttt);
             }
-            return list;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void DeleteCTToaThuoc(string maThuoc)
+        {
+            ctttDAO.DeleteCTTT(maThuoc);
         }
     }
 }

@@ -45,34 +45,41 @@ namespace Project.BUS
             }
             return list;
         }
-        public List<PhieuKhamBenh> getPKBByID(int id)
+        public void AddPKB(PhieuKhamBenh phieuKB)
         {
-            DataTable dt = new DataTable();
             try
             {
-                dt = PKBDAO.getPhieuKhamBenhByID(id);
+                string maPK = phieuKB.MaPK;
+                string maBN = phieuKB.MaBN;
+                DateTime? NgayKham = phieuKB.NgayKham;
+                int? stt = phieuKB.STT;
+                string trieuchung = phieuKB.TrieuChung;
+                string chuandoan = phieuKB.ChuanDoan;
+                PKBDAO.AddPKB(phieuKB);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(ex.Message);
             }
-            List<PhieuKhamBenh> list = new List<PhieuKhamBenh>();
-            if (dt.Rows.Count > 0)
+        }
+        public void UpdatePKB(PhieuKhamBenh phieuKB)
+        {
+            try
             {
-                foreach (DataRow dr in dt.Rows)
-                {
-                    PhieuKhamBenh pkb = new PhieuKhamBenh();
-
-                    pkb.MaPK = dr["MaPK"].ToString();
-                    pkb.MaBN = dr["MaBN"].ToString();
-                    pkb.NgayKham = DateTime.Parse(dr["NgayKham"].ToString());
-                    pkb.STT = Int32.Parse(dr["STT"].ToString());
-                    pkb.TrieuChung = dr["TrieuChung"].ToString();
-                    pkb.ChuanDoan = dr["ChuanDoan"].ToString();
-                    list.Add(pkb);
-                }
+                DateTime? NgayKham = phieuKB.NgayKham;
+                int? stt = phieuKB.STT;
+                string trieuchung = phieuKB.TrieuChung;
+                string chuandoan = phieuKB.ChuanDoan;
+                PKBDAO.AddPKB(phieuKB);
             }
-            return list;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public void DeletePKB(string maThuoc)
+        {
+            PKBDAO.DeletePKB(maThuoc);
         }
     }
 }
