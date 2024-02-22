@@ -50,16 +50,9 @@ namespace Project
             FormToaThuoc form = new FormToaThuoc();
             form.ShowDialog(); 
         }
-        private void mnuHoaDon_Click(object sender, EventArgs e)
+        private void FormMain_Load(object sender, EventArgs e)
         {
-            FormHoaDon form = new FormHoaDon();
-            form.ShowDialog();
-        }
 
-        private void mnuCTHD_Click(object sender, EventArgs e)
-        {
-            FormChiTietHD form = new FormChiTietHD();
-            form.ShowDialog();
         }
     }
 }
